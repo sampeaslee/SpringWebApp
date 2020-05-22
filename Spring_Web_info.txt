@@ -1,0 +1,36 @@
+Spring Web App Info
+
+The Spring web MVC framework is designed around a DispatcherServlet that handles all the HTTP requests and responses.
+After receiving an HTTP request, DispatacherServlet consults the HandlerMapping to call the appropriate Controller.
+The controller takes the request and calls the appropriate service methods based on used GET or POST methods. 
+The service method will set model data based on defined business logic and returns view name to the DispatcherServlet.
+The DispatcherServlet will take help from the ViewResolver to pickup the defined view for the request. 
+Once view is finalized, the DispatacherServlet passes model data to the view which is finally rendered on the browser. 
+HandlerMapping, Controller and ViewResolver are parts of WebApplicationContext. 
+
+You need to map requests that you want the DispatacherServlet to handle, by using a URL mapping in the web.xml file.
+Store the web.xml file in the WebContent/WEB-INF directory of your web application. 
+Upon initialization of HelloWeb DispatcherServlet, the framework will try to load the application context from a file named
+servlet_name_servlet.xml located in the applications WebContent/WEB-INF directory. 
+<servlet-mapping> - indicates what url's will be handled by which DispatchServlet. 
+
+Notes for servlet.xml file
+Will be used to create the beans defined
+<context:component-scan...> tag will be used to activate Spring MVC annotation scanning capability
+The InternalResourceViewResolver will have rules defined to resolve the view names. 
+
+Defining a controller
+@Controller indicates a particular class serves the role of a controller.
+@RequestMapping is used to map a url to either an entire class or a particular handler method 
+Define required business logic inside a service method
+Based on the business logic you define you will create a model within this method. You can use setter 
+different model attributes and these attributes will be accessed by the view to present the final results
+A defined service metthod can return a String, which contains the name of the view to be used to render the model
+
+
+HTTP- Hypertext Transfer Protocol (HTTP) is an application-level protocol for distributed, collaborative hypermedia
+information systems. 
+
+GET and POST Methods - used to transfer data from client to server in HTTP
+GET - carries request parameter appended in URL string 
+POST - carries request parameter in message body which makes it a more secure way of transferring data 
